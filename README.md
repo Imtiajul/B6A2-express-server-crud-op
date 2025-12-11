@@ -1,5 +1,5 @@
 # 🚗 Vehicle Rental System
-**[Live URL : https://expressjs-b6a2.vercel.app](https://expressjs-b6a2.vercel.app/)**
+**[Live URL : https://b6a2-expressjs.vercel.app](https://b6a2-expressjs.vercel.app/)**
 
 ## 🎯 Project Features
 
