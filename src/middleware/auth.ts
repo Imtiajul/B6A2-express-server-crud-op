@@ -35,14 +35,13 @@ const auth = (...roles: ("admin" | "customer")[]) => {
     //check customer
     const cusResult = await pool.query(`SELECT * FROM users WHERE email = $1`, [req.user!.email])
     // console.log(cusResult);
-    console.log(req.params.userId, cusResult.rows[0].id, decoded.role);
-console.log('first')
+    // console.log(req.params.userId, cusResult.rows[0].id, decoded.role);
 
-    if (req.params.userId && cusResult.rows[0].id.toString() !== req.params.userId) {
+    if (req.params.userId && decoded.role ==="customer" && cusResult.rows[0].id.toString() !== req.params.userId) {
       // throw new Error("You can only update your profile");
       return res.status(403).json({
         success: false,
-        message: "insufficient permissions.. You can only update your profile!!",
+        message: "insufficient permissions.. You can only update/delete your profile!!",
       });
     }
     next();
