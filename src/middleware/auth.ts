@@ -36,8 +36,9 @@ const auth = (...roles: ("admin" | "customer")[]) => {
     const cusResult = await pool.query(`SELECT * FROM users WHERE email = $1`, [req.user!.email])
     // console.log(cusResult);
     console.log(req.params.userId, cusResult.rows[0].id, decoded.role);
+console.log('first')
 
-    if (req.params.userId && decoded.role === 'customer' && cusResult.rows[0].id !== req.params.userId) {
+    if (req.params.userId && cusResult.rows[0].id.toString() !== req.params.userId) {
       // throw new Error("You can only update your profile");
       return res.status(403).json({
         success: false,
